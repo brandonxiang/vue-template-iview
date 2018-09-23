@@ -1,35 +1,3 @@
-<style>
-body, html{
-  height: 100%;
-  padding: 0;
-}
-.ivu-layout {
-   height: 100%;
-}
-.layout{
-  height:100%;
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-}
-.layout-logo{
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-}
-.layout-nav{
-    width: 420px;
-    margin: 0 auto;
-    margin-right: 20px;
-}
-</style>
 <template>
     <div class="layout">
         <Layout>
@@ -48,10 +16,6 @@ body, html{
                         <MenuItem name="3">
                             <Icon type="ios-analytics"></Icon>
                             Item 3
-                        </MenuItem>
-                        <MenuItem name="4">
-                            <Icon type="ios-paper"></Icon>
-                            Item 4
                         </MenuItem>
                     </div>
                 </Menu>
@@ -86,7 +50,7 @@ body, html{
                         </Submenu>
                     </Menu>
                 </Sider>
-                <Layout :style="{padding: '0 24px 24px'}">
+                <Layout :style="{padding: '0 24px'}">
                   <iframe></iframe>
                 </Layout>
             </Layout>
@@ -101,3 +65,41 @@ import {Layout, Header, Menu, MenuItem, Sider, Submenu, Icon, Breadcrumb, Breadc
         }
     }
 </script>
+
+<style>
+@import './assets/normalize.css';
+body, html{
+  height: 100%;
+  padding: 0;
+}
+iframe {
+  border:0;
+  height: 100%;
+}
+.ivu-layout {
+   height: 100%;
+}
+.layout{
+  height:100%;
+    border: 1px solid #d7dde4;
+    background: #f5f7f9;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.layout-logo{
+    width: 100px;
+    height: 30px;
+    background: #5b6270;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+}
+.layout-nav{
+    width: 420px;
+    margin: 0 auto;
+    margin-right: 20px;
+}
+</style>

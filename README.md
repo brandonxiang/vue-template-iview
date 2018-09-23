@@ -1,9 +1,10 @@
 
-# vue-template-iview
-A demo for iview powerby vue-cli3.0
+# mirco-frontend-vue-iview
 
+This is a demo for micro frontend powerby vue-cli3.0 and iview.
 
-# iview-template
+It is inspired by single-spa. However, single-spa is not the best solution for micro-frontend. 
+
 
 ## Project setup
 ```
