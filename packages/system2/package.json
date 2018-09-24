@@ -1,6 +1,6 @@
 {
-  "name": "system2",
-  "version": "0.1.0",
+  "name": "micro-frontend-subsystem2",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
