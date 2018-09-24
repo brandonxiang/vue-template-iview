@@ -58,7 +58,19 @@
     </div>
 </template>
 <script>
-import {Layout, Header, Menu, MenuItem, Sider, Submenu, Icon, Breadcrumb, BreadcrumbItem, Content} from 'iview'
+import {
+    Layout,
+    Header,
+    Menu,
+    MenuItem,
+    Sider,
+    Submenu,
+    Icon,
+    Breadcrumb,
+    BreadcrumbItem,
+    Content,
+} from 'iview'
+
     export default {
         components: {
           Layout, Header, Menu, MenuItem, Sider, Submenu, Icon, Breadcrumb, BreadcrumbItem, Content
