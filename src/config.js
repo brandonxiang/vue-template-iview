@@ -11,7 +11,7 @@ export default {
       systemIcon: 'ios-navigate',
       systemPages: [
         { pageTitle: 'Page 1', pageName: '1/', link: 'http://localhost:8002/'},
-        { pageTitle: 'Page 2', pageName: '1/about', link: 'http://localhost:8002/#/about' },
+        { pageTitle: 'Page 2', pageName: '1/1', link: 'http://localhost:8002/#/1' },
       ]
     },
     {
@@ -19,9 +19,9 @@ export default {
       systemName: '2',
       systemIcon: 'ios-keypad',
       systemPages: [
-        { pageTitle: 'Page 1', pageName: '2-1', link: 'http://localhost:8003/' },
-        { pageTitle: 'Page 2', pageName: '2-2', link: 'http://localhost:8003/' },
-        { pageTitle: 'Page 3', pageName: '2-3', link: 'http://localhost:8003/' },
+        { pageTitle: 'Page 1', pageName: '2/', link: 'http://localhost:8003/' },
+        { pageTitle: 'Page 2', pageName: '2/1', link: 'http://localhost:8003/#/1' },
+        { pageTitle: 'Page 3', pageName: '2/2', link: 'http://localhost:8003/#/2' },
       ]
     },
     {
@@ -29,8 +29,8 @@ export default {
       systemName: '3',
       systemIcon: 'ios-analytics',
       systemPages: [
-        { pageTitle: 'Page 1', pageName: '3-1', link: 'http://localhost:8004/' },
-        { pageTitle: 'Page 2', pageName: '3-2', link: 'http://localhost:8004/' },
+        { pageTitle: 'Page 1', pageName: '3/1', link: 'http://localhost:8004/' },
+        { pageTitle: 'Page 2', pageName: '3/2', link: 'http://localhost:8004/#/1' },
       ]
     }
   ]
