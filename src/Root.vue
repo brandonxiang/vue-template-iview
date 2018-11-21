@@ -46,6 +46,7 @@ import {
   Content
 } from "iview";
 import config from "./config";
+import Mefa from './mefa.js'
 
 export default {
 
@@ -68,7 +69,19 @@ export default {
       subSystem: config.subSystem,
       system: '',
       page: '',
+      mefa: undefined,
     };
+  },
+
+  mounted() {
+    this.mefa = new Mefa(this.$refs.subsystem)
+    this.mefa.registerApplication({app: '1', route: '/', link: 'http://localhost:8002/'})
+    this.mefa.registerApplication({app: '1', route: '/1', link: 'http://localhost:8002/'})
+    this.mefa.registerApplication({app: '2', route: '/', link: 'http://localhost:8003/'})
+    this.mefa.registerApplication({app: '2', route: '/1', link: 'http://localhost:8003/'})
+    this.mefa.registerApplication({app: '2', route: '/2', link: 'http://localhost:8003/'})
+    this.mefa.registerApplication({app: '3', route: '/', link: 'http://localhost:8004/'})
+    this.mefa.registerApplication({app: '3', route: '/1', link: 'http://localhost:8004/'})
   },
 
   methods: {
@@ -78,47 +91,9 @@ export default {
       if(result.length && result.length > 2) {
         const system = result[1];
         const page = result[2];
-        if(this.isInSameSystem(system)) {
-          if(!this.isInSamePage(system, page)){
-            this.navigateInSystem(system, page);
-          }
-        } else {
-          this.navigateOutSystem(system, name);
-        }
-        this.system = system;
-        this.page = page;
+        this.mefa.navigateTo({app: system, route: `/${page}`})
       }
-      console.log(name)
     },
-
-    navigateInSystem() {
-       window.frames[0].postMessage('data');
-      // this.$refs.subsystem.postMessage('hello');
-    },
-    navigateOutSystem(system, name) {
-      this.subSystem.some((menu)=> {
-        if(menu.systemName === system){
-          menu.systemPages.some((item)=>{
-            if(item.pageName === name) {
-              this.$refs.subsystem.src = item.link;
-              return true;
-            }
-            return false
-          })
-          return true;
-        }
-        return false;
-      })
-    },
-    isInSameSystem(system) {
-      return this.system && this.system === system;
-    },
-    isInSamePage(system, page) {
-      return this.isInSameSystem(system) && this.page && this.page === page
-    },
-    findPage() {
-
-    }
   }
 };
 </script>
