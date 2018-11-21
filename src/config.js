@@ -29,8 +29,8 @@ export default {
       systemName: '3',
       systemIcon: 'ios-analytics',
       systemPages: [
-        { pageTitle: 'Page 1', pageName: '3/1', link: 'http://localhost:8004/' },
-        { pageTitle: 'Page 2', pageName: '3/2', link: 'http://localhost:8004/#/1' },
+        { pageTitle: 'Page 1', pageName: '3/', link: 'http://localhost:8004/' },
+        { pageTitle: 'Page 2', pageName: '3/1', link: 'http://localhost:8004/#/1' },
       ]
     }
   ]

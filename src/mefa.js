@@ -10,8 +10,12 @@ export default class mefa {
 
   registerApplication({ app, route, link }) {
     if(!app || !route || !link) return;
-    if(!this.currentApp) this.currentApp = app
+
     if(!this.currentRoute) this.currentRoute = route
+    if(!this.currentApp) {
+      this.currentApp = app
+      this.frame.src = link
+    }
     // TODO: 去重复系统和路由
     if(!this.checkDuplicatedApp(app)) {
       this.subSystems[app] = {link, route: [route]}
@@ -25,9 +29,11 @@ export default class mefa {
     if(this.isInSameSystem(app)) {
       if(!this.isInSamePage(app, route)){
         this.navigateInSystem(app, route)
+        this.updateApp(app, route)
       }
     }else {
       this.navigateOutSystem(app, route)
+      this.updateApp(app, route)
     }
   }
 
@@ -42,7 +48,7 @@ export default class mefa {
   }
 
   navigateInSystem(system, name) {
-    this.frame.postMessage({route: name}, '*')
+    this.frame.contentWindow.postMessage({route: name}, '*')
   }
 
   navigateOutSystem(system) {
@@ -58,9 +64,16 @@ export default class mefa {
     return this.isInSameSystem(system) && this.currentRoute && this.currentRoute === page
   }
 
+  updateApp(system, page) {
+    this.currentApp = system
+    this.currentRoute = page
+  }
+
   static onRouteUpdate(cb) {
-    window.addEventListener('message', () => {
-      cb()
+    window.addEventListener('message', (res) => {
+      if(res.data) {
+        cb(res.data.route)
+      }
     })
   }
 } 

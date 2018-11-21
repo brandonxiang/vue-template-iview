@@ -12,9 +12,6 @@
 
 export default {
   mounted () {
-    window.addEventListener('message', (message)=>{
-      console.log(message);
-    })
   }
 }
 </script>
