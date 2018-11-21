@@ -1,6 +1,8 @@
 export default class mefa {
-  constructor() {
+  constructor(frame) {
     this.frames = []
+    // 设置frame
+    this.frame = frame
     this.subSystems = {}
     this.currentApp = ''
     this.currentRoute = ''
@@ -20,22 +22,26 @@ export default class mefa {
   }
 
   navigateTo({ app, route }) {
-    if(this.isInSamePage(app)){
-
-    } else 
+    if(this.isInSameSystem(app)) {
+      if(!this.isInSamePage(app, route)){
+        this.navigateInSystem(route)
+      }
+    }else {
+      this.navigateOutSystem(app, route)
+    }
   }
 
   checkDuplicatedApp(app) {
     // true 为没有重复app
-
+    return this.subSystems.hasOwnProperty(app)
   }
 
   checkDuplicatedRoute(route) {
     // true 为没有重复route
-
+    return this.subSystems[app].route.indexOf(route) > -1
   }
 
-  navigateInSystem() {
+  navigateInSystem(name) {
 
   }
 
@@ -56,10 +62,16 @@ export default class mefa {
   }
 
   isInSameSystem(system) {
-    return this.system && this.system === system;
+    return this.currentApp && this.currentApp === system;
   }
 
   isInSamePage(system, page) {
-    return this.isInSameSystem(system) && this.page && this.page === page
+    return this.isInSameSystem(system) && this.currentRoute && this.currentRoute === page
+  }
+
+  static onRouteUpdate(cb) {
+    window.addEventListener('message', () => {
+      cb()
+    })
   }
 } 
