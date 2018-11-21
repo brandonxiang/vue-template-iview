@@ -24,7 +24,7 @@ export default class mefa {
   navigateTo({ app, route }) {
     if(this.isInSameSystem(app)) {
       if(!this.isInSamePage(app, route)){
-        this.navigateInSystem(route)
+        this.navigateInSystem(app, route)
       }
     }else {
       this.navigateOutSystem(app, route)
@@ -41,24 +41,13 @@ export default class mefa {
     return this.subSystems[app].route.indexOf(route) > -1
   }
 
-  navigateInSystem(name) {
-
+  navigateInSystem(system, name) {
+    this.frame.postMessage({route: name})
   }
 
-  navigateOutSystem(system, name) {
-    this.subSystems.some((menu) => {
-      if (menu.systemName === system) {
-        menu.systemPages.some((item) => {
-          if (item.pageName === name) {
-            this.$refs.subsystem.src = item.link;
-            return true;
-          }
-          return false
-        })
-        return true;
-      }
-      return false;
-    })
+  navigateOutSystem(system) {
+    const link = this.subSystems[system].link
+    this.frame.src = link
   }
 
   isInSameSystem(system) {
